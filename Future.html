@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
   <head>
@@ -8,9 +9,19 @@
 
 
   <body>
-  <h1>What will your future be like? </h1>
+  <h1>What will your life companion be like? </h1>
 
   <div id="UserInput">
+
+<ul>
+Dating and marriage is one of our top priorities, but things don't work like you want them to and ...<br><br>
+<li>Are you sick of Tinder?</li>
+<li>Enough awkward first dates?</li>
+<li>Most of your friends already got married or have kids and you don't wanna die alone</li>
+<li>You wonder whether your destined companion exists? whether you will find each other before you turn 70?</li>
+<li>Are you scared because the divorce rate is so high?</li><br>
+We know, we have all been there. Therefore, we spent a lot of time gathering information from research from different fields including psychology, sociology and history to give you the most valuable information about your life companion. We have developed a superb algorithm that use your information to generate the most accurate result possible.
+</ul><br>
 
   <p>Give us some information and we will show you how your future will look like</p><br><br><br>
 
@@ -53,8 +64,8 @@
 
   Your preference for your spouse's status: (you can choose more than one option)<br>
   <input type="checkbox" name="status" value="Single, never married">Single, never married<br>
-  <input type="checkbox" name="status" value="Divorced, no knames">Divorced, no kids<br>
-  <input type="checkbox" name="status" value="Divorced, with kname(s)">Divorced, with kids(s)<br>
+  <input type="checkbox" name="status" value="Divorced, no kidss">Divorced, no kids<br>
+  <input type="checkbox" name="status" value="Divorced, with kid(s)">Divorced, with kid(s)<br>
   <input type="checkbox" name="status" value="Wnameowed">Widowed<br><br><br><br>
 
    Your ideal future house is: <br>
@@ -90,10 +101,8 @@
 
 
 <script>
-
 // I got part of this working then I modified it and the whole thing doesn't work anymore  T_T I tried using button instead but it didn't work either
 //I'm sure it will take us like 3 mins to figure this out, can't believe I've spent hours on this,I can't think anymore
-
         var SButton = document.getElementById("SubmitButton");
         SButton.addEventListener('click', function(e) {
             e.preventDefault();
@@ -115,7 +124,6 @@
             
             
             var apiKey = 'w89eh8a7yxrq7k3yswcm72y3';
-
             $.ajax(
             {
               type:'GET',
@@ -154,12 +162,9 @@
             alert(JSON.stringify(data,2))
             });
       });
-
-
     </script>
 
 </div>
-
 
 
   </body>
