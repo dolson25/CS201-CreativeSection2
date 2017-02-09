@@ -83,6 +83,10 @@
     <p> According to the information you gave us: 
     <span id="story"></span>
     </p>
+    
+    <div id="pictures">
+
+    </div>
 
 
 <script>
@@ -91,20 +95,46 @@
 //I'm sure it will take us like 3 mins to figure this out, can't believe I've spent hours on this,I can't think anymore
 
         var SButton = document.getElementById("SubmitButton");
-        var submit = function() {
+        SButton.addEventListener('click', function(e) {
+            e.preventDefault();
             var story = document.getElementById("story");
             var name = document.getElementById("name").value;
-            var race = document.getElementByname("race").value;
-            var srace = document.getElementByname("srace").value;
-            var mission = document.getElementByname("mission").value;
-            var edu = document.getElementByname("education").value;
-            var status = document.getElementByname("status").value;
-            var house = document.getElementByname("house").value;
-            story.innerHTML =name + "want the future spouse to be" +srace ;    
-        };
+            var gender = $('input[name=gender]:checked').val();
+            var sgender = "";
+            if (gender=="male")
+              sgender = "woman";
+            else
+              sgender = "man";
+            var race = $('input[name=race]:checked').val();
+            var srace = $('input[name=srace]:checked').val();
+            var mission = $('input[name=mission]:checked').val();
+            var edu = $('input[name=education]:checked').val();
+            var status = $('input[name=status]:checked').val();
+            var house = $('input[name=house]:checked').val();
+            story.innerHTML = name + " wants the future spouse to be a " + srace + " " + sgender;
+            
+            
+            var apiKey = 'w89eh8a7yxrq7k3yswcm72y3';
 
-
-          SButton.addEventListener('click', submit);
+            $.ajax(
+            {
+              type:'GET',
+              url:"https://api.gettyimages.com/v3/search/images/creative?phrase=people," + srace + "," + sgender,
+               beforeSend: function (request)
+              {
+                  request.setRequestHeader("Api-Key", apiKey);
+              }})
+          .done(function(data){
+            console.log("Success with data")
+            for(var i = 0;i<4;i++)
+            {
+               $("#pictures").append("<img src='" + data.images[i].display_sizes[0].uri + "'/>");
+            }
+          })
+          .fail(function(data){
+            alert(JSON.stringify(data,2))
+            });
+      });
 
 
     </script>
