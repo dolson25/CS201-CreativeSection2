@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html>
   <head>
@@ -91,18 +90,29 @@ We know, we have all been there. Therefore, we spent a lot of time gathering inf
 
 <div id="Result">
   
-    <p> According to the information you gave us: 
+    <h1 id="rh"></h1>
+    <p> Possible Life-Long Companions: 
     <span id="story"></span>
     </p>
     
-    <div id="pictures">
+    <div id="pets">
+
+    </div>
+    
+    <p> Possible Future Homes 
+    <span id="story"></span>
+    </p>
+    
+    <div id="home">
 
     </div>
 
 
 <script>
+
 // I got part of this working then I modified it and the whole thing doesn't work anymore  T_T I tried using button instead but it didn't work either
 //I'm sure it will take us like 3 mins to figure this out, can't believe I've spent hours on this,I can't think anymore
+
         var SButton = document.getElementById("SubmitButton");
         SButton.addEventListener('click', function(e) {
             e.preventDefault();
@@ -121,9 +131,12 @@ We know, we have all been there. Therefore, we spent a lot of time gathering inf
             var status = $('input[name=status]:checked').val();
             var house = $('input[name=house]:checked').val();
             //story.innerHTML = name + " wants the future spouse to be a " + srace + " " + sgender;
+            var rh = document.getElementById("rh");
+            rh.innerHTML = "Hi " + name;
             
             
             var apiKey = 'w89eh8a7yxrq7k3yswcm72y3';
+
             $.ajax(
             {
               type:'GET',
@@ -136,7 +149,7 @@ We know, we have all been there. Therefore, we spent a lot of time gathering inf
             console.log("Success with data")
             for(var i = 0;i<4;i++)
             {
-               $("#pictures").append("<img src='" + data.images[i].display_sizes[0].uri + "'/>");
+               $("#pets").append("<img src='" + data.images[i].display_sizes[0].uri + "'/>");
             }
           })
           .fail(function(data){
@@ -155,16 +168,19 @@ We know, we have all been there. Therefore, we spent a lot of time gathering inf
             console.log("Success with data")
             for(var i = 0;i<4;i++)
             {
-               $("#pictures").append("<img src='" + data.images[i].display_sizes[0].uri + "'/>");
+               $("#home").append("<img src='" + data.images[i].display_sizes[0].uri + "'/>");
             }
           })
           .fail(function(data){
             alert(JSON.stringify(data,2))
             });
       });
+
+
     </script>
 
 </div>
+
 
 
   </body>
